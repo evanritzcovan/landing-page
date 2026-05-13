@@ -125,7 +125,10 @@ export function HeroSection() {
                 </>
               );
 
-              if (cta.external) {
+              const openInNewTab =
+                cta.external || cta.href.toLowerCase().endsWith(".pdf");
+
+              if (openInNewTab) {
                 return (
                   <a
                     key={cta.label}

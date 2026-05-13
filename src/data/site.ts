@@ -12,6 +12,6 @@ export const siteConfig: SiteConfig = {
   links: {
     github: "https://github.com/evanritzcovan",
     linkedin: "https://www.linkedin.com/in/evanritzcovan",
-    resume: "/#resume",
+    resume: "/resume.pdf",
   },
 };
