@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
+import { Shell } from "@/components/layout/shell";
 import { siteConfig } from "@/data/site";
 
 import "./globals.css";
@@ -34,7 +35,9 @@ export default function RootLayout({
       lang="en"
       className={`dark ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-screen flex-col">
+        <Shell>{children}</Shell>
+      </body>
     </html>
   );
 }
