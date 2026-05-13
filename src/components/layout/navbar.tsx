@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 
 import { mainNavItems } from "@/data/navigation";
 import { siteConfig } from "@/data/site";
+import { opensInNewTab } from "@/lib/href";
 import { cn } from "@/lib/utils";
 
 import { Container } from "./container";
@@ -22,14 +23,31 @@ function NavLink({
   onNavigate?: () => void;
   className?: string;
 }) {
+  const linkClass = cn(
+    "text-muted-foreground hover:text-foreground focus-visible:ring-ring rounded-md text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
+    className
+  );
+
+  if (opensInNewTab(href)) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={onNavigate}
+        className={linkClass}
+      >
+        {children}
+      </a>
+    );
+  }
+
   return (
     <Link
       href={href}
       onClick={onNavigate}
-      className={cn(
-        "text-muted-foreground hover:text-foreground focus-visible:ring-ring rounded-md text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
-        className
-      )}
+      className={linkClass}
+      prefetch={false}
     >
       {children}
     </Link>
@@ -69,7 +87,7 @@ export function Navbar() {
 
         <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
           {mainNavItems.map((item) => (
-            <NavLink key={item.href} href={item.href}>
+            <NavLink key={item.label} href={item.href}>
               {item.label}
             </NavLink>
           ))}
@@ -106,7 +124,7 @@ export function Navbar() {
             <nav aria-label="Primary mobile" className="px-4 py-4">
               <ul className="flex flex-col gap-1">
                 {mainNavItems.map((item) => (
-                  <li key={item.href}>
+                  <li key={item.label}>
                     <NavLink
                       href={item.href}
                       className="block py-2.5 text-base"

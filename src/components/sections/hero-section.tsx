@@ -8,6 +8,7 @@ import { Container } from "@/components/layout/container";
 import { buttonVariants } from "@/components/ui/button";
 import { getHeroCtas, heroEyebrow, type HeroCtaIcon } from "@/data/hero";
 import { siteConfig } from "@/data/site";
+import { opensInNewTab } from "@/lib/href";
 import { cn } from "@/lib/utils";
 
 function CtaIcon({ name }: { name: HeroCtaIcon }) {
@@ -125,10 +126,7 @@ export function HeroSection() {
                 </>
               );
 
-              const openInNewTab =
-                cta.external || cta.href.toLowerCase().endsWith(".pdf");
-
-              if (openInNewTab) {
+              if (opensInNewTab(cta.href)) {
                 return (
                   <a
                     key={cta.label}

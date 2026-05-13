@@ -40,7 +40,6 @@ export default function Home() {
       <PageSection id="projects" title="Projects" />
       <PageSection id="about" title="About" />
       <PageSection id="stack" title="Tech stack" />
-      <PageSection id="resume" title="Resume" />
       <PageSection id="contact" title="Contact" />
     </>
   );
