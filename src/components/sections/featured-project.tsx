@@ -2,17 +2,10 @@ import Image from "next/image";
 import { Code, ExternalLink } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
+import { TechBadge } from "@/components/shared/tech-badge";
 import { cn } from "@/lib/utils";
 
 import type { FeaturedProject } from "@/types/project";
-
-function StackChip({ children }: { children: string }) {
-  return (
-    <span className="border-border/60 text-muted-foreground rounded-md border px-2 py-0.5 text-xs font-medium">
-      {children}
-    </span>
-  );
-}
 
 export type FeaturedProjectShowcaseProps = {
   project: FeaturedProject;
@@ -67,7 +60,7 @@ export function FeaturedProjectShowcase({
 
           <div className="mt-6 flex flex-wrap gap-1.5">
             {project.stack.map((tech) => (
-              <StackChip key={tech}>{tech}</StackChip>
+              <TechBadge key={tech}>{tech}</TechBadge>
             ))}
           </div>
 

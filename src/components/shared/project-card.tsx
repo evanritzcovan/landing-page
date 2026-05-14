@@ -1,21 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ReactNode } from "react";
 import { ExternalLink } from "lucide-react";
 
+import { TechBadge } from "@/components/shared/tech-badge";
 import { buttonVariants } from "@/components/ui/button";
 import { opensInNewTab } from "@/lib/href";
 import { cn } from "@/lib/utils";
 
 import type { Project, ProjectLink } from "@/types/project";
-
-function StackChip({ children }: { children: ReactNode }) {
-  return (
-    <span className="border-border/60 text-muted-foreground rounded-md border px-2 py-0.5 text-xs font-medium">
-      {children}
-    </span>
-  );
-}
 
 function ProjectLinkButton({ label, href }: ProjectLink) {
   const className = cn(
@@ -83,7 +75,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         </p>
         <div className="mt-4 flex flex-wrap gap-1.5">
           {project.stack.slice(0, 6).map((tech) => (
-            <StackChip key={tech}>{tech}</StackChip>
+            <TechBadge key={tech}>{tech}</TechBadge>
           ))}
         </div>
         <div className="mt-5 flex flex-wrap gap-2">

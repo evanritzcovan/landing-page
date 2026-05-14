@@ -1,8 +1,10 @@
 import type { ReactNode } from "react";
 
 import { SectionWrapper } from "@/components/layout/section-wrapper";
+import { AboutSection } from "@/components/sections/about-section";
 import { HeroSection } from "@/components/sections/hero-section";
 import { ProjectsSection } from "@/components/sections/projects-section";
+import { TechStackSection } from "@/components/sections/tech-stack-section";
 import { cn } from "@/lib/utils";
 
 function PageSection({
@@ -39,8 +41,8 @@ export default function Home() {
       <HeroSection />
 
       <ProjectsSection />
-      <PageSection id="about" title="About" />
-      <PageSection id="stack" title="Tech stack" />
+      <AboutSection />
+      <TechStackSection />
       <PageSection id="contact" title="Contact" />
     </>
   );
