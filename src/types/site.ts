@@ -15,5 +15,7 @@ export type SiteConfig = {
   description: string;
   /** Canonical site URL for metadata and absolute links */
   url: string;
+  /** Shown in the contact section; override with NEXT_PUBLIC_CONTACT_EMAIL */
+  email: string;
   links: SiteLinks;
 };

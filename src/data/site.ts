@@ -9,6 +9,8 @@ export const siteConfig: SiteConfig = {
   url:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
     "http://localhost:3000",
+  email:
+    process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || "your-email@example.com",
   links: {
     github: "https://github.com/evanritzcovan",
     linkedin: "https://www.linkedin.com/in/evanritzcovan",
