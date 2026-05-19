@@ -22,8 +22,20 @@ export const featuredProject: FeaturedProject = {
   ],
   githubUrl: "https://github.com/evanritzcovan/habit-agent",
   demoUrl: undefined,
-  // imageSrc: "/habit-agent.png",
-  // imageAlt: "Habit Agent",
+  screenshots: [
+    {
+      src: "/habit-agent-1.png",
+      alt: "AI habit tracker Today view",
+    },
+    {
+      src: "/habit-agent-2.png",
+      alt: "AI habit tracker plan checklist",
+    },
+    {
+      src: "/habit-agent-3.png",
+      alt: "AI habit tracker habit detail",
+    },
+  ],
 };
 
 export const projects: Project[] = [

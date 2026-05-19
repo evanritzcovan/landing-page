@@ -1,7 +1,9 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { Code, ExternalLink } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
+import { FeaturedScreenshotGallery } from "@/components/shared/featured-screenshot-gallery";
 import { TechBadge } from "@/components/shared/tech-badge";
 import { cn } from "@/lib/utils";
 
@@ -10,6 +12,71 @@ import type { FeaturedProject } from "@/types/project";
 export type FeaturedProjectShowcaseProps = {
   project: FeaturedProject;
 };
+
+const visualShellClass =
+  "border-border/40 relative min-h-[280px] border-t lg:min-h-[380px] lg:border-t-0 lg:border-l";
+
+const visualBackdropClass =
+  "pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_60%_at_50%_40%,oklch(0.32_0.08_264/0.45),transparent_68%),linear-gradient(165deg,oklch(0.18_0.02_264/0.9),oklch(0.14_0.02_264/0.95))]";
+
+function VisualShell({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return <div className={cn(visualShellClass, className)}>{children}</div>;
+}
+
+function FeaturedProjectVisual({ project }: { project: FeaturedProject }) {
+  const screenshots = project.screenshots ?? [];
+
+  if (screenshots.length > 0) {
+    return (
+      <VisualShell>
+        <FeaturedScreenshotGallery
+          screenshots={screenshots}
+          projectTitle={project.title}
+          className="relative min-h-[280px] px-4 py-8 sm:px-6 sm:py-10 lg:min-h-[380px] lg:px-8"
+        />
+      </VisualShell>
+    );
+  }
+
+  if (project.imageSrc) {
+    return (
+      <VisualShell>
+        <div className="relative aspect-video h-full min-h-[280px] w-full lg:aspect-auto lg:min-h-[380px]">
+          <Image
+            src={project.imageSrc}
+            alt={project.imageAlt || `${project.title} interface preview`}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            priority
+          />
+        </div>
+      </VisualShell>
+    );
+  }
+
+  return (
+    <VisualShell className="flex items-center justify-center">
+      <div aria-hidden className={visualBackdropClass} />
+      <div className="border-border/50 bg-background/10 relative mx-6 aspect-video w-full max-w-lg rounded-lg border shadow-sm backdrop-blur-sm sm:mx-10">
+        <div className="border-border/40 flex items-center gap-1.5 border-b px-3 py-2">
+          <span className="bg-muted-foreground/30 size-2 rounded-full" />
+          <span className="bg-muted-foreground/20 size-2 rounded-full" />
+          <span className="bg-muted-foreground/15 size-2 rounded-full" />
+        </div>
+        <div className="text-muted-foreground/80 flex h-[calc(100%-2.25rem)] items-center justify-center px-4 text-center text-xs font-medium tracking-wide uppercase">
+          Interface preview
+        </div>
+      </div>
+    </VisualShell>
+  );
+}
 
 export function FeaturedProjectShowcase({
   project,
@@ -94,37 +161,7 @@ export function FeaturedProjectShowcase({
           </div>
         </div>
 
-        <div className="border-border/40 relative min-h-[220px] border-t lg:border-t-0 lg:border-l">
-          {project.imageSrc ? (
-            <div className="relative aspect-video h-full min-h-[220px] w-full lg:aspect-auto lg:min-h-[360px]">
-              <Image
-                src={project.imageSrc}
-                alt={project.imageAlt || `${project.title} interface preview`}
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority
-              />
-            </div>
-          ) : (
-            <div
-              aria-hidden
-              className="relative flex min-h-[240px] flex-1 items-center justify-center lg:min-h-[360px]"
-            >
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_60%_at_50%_40%,oklch(0.32_0.08_264/0.45),transparent_68%),linear-gradient(165deg,oklch(0.18_0.02_264/0.9),oklch(0.14_0.02_264/0.95))]" />
-              <div className="border-border/50 bg-background/10 relative mx-6 aspect-video w-full max-w-lg rounded-lg border shadow-sm backdrop-blur-sm sm:mx-10">
-                <div className="border-border/40 flex items-center gap-1.5 border-b px-3 py-2">
-                  <span className="bg-muted-foreground/30 size-2 rounded-full" />
-                  <span className="bg-muted-foreground/20 size-2 rounded-full" />
-                  <span className="bg-muted-foreground/15 size-2 rounded-full" />
-                </div>
-                <div className="text-muted-foreground/80 flex h-[calc(100%-2.25rem)] items-center justify-center px-4 text-center text-xs font-medium tracking-wide uppercase">
-                  Interface preview
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
+        <FeaturedProjectVisual project={project} />
       </div>
     </article>
   );

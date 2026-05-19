@@ -3,6 +3,11 @@ export type ProjectLink = {
   href: string;
 };
 
+export type FeaturedScreenshot = {
+  src: string;
+  alt: string;
+};
+
 /** Compact card used in the “more projects” grid */
 export type Project = {
   id: string;
@@ -26,6 +31,9 @@ export type FeaturedProject = {
   stack: string[];
   githubUrl: string;
   demoUrl?: string;
+  /** Mobile or UI screenshots (preferred for featured mobile apps) */
+  screenshots?: FeaturedScreenshot[];
+  /** Single wide preview; used when `screenshots` is empty */
   imageSrc?: string;
   imageAlt?: string;
 };
