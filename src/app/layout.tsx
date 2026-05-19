@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import { Shell } from "@/components/layout/shell";
 import { siteConfig } from "@/data/site";
@@ -38,6 +40,8 @@ export default function RootLayout({
     >
       <body className="flex min-h-screen flex-col">
         <Shell>{children}</Shell>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
