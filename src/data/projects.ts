@@ -1,65 +1,75 @@
 import type { FeaturedProject, Project } from "@/types/project";
 
 export const featuredProject: FeaturedProject = {
-  id: "agentic-dev-workbench",
-  title: "Agentic dev workbench",
-  tagline: "From intent to pull requests with guardrails.",
+  id: "ai-habit-tracker",
+  title: "AI habit tracker",
+  tagline: "Structured behavior change with AI-generated action plans.",
   description:
-    "A local-first developer cockpit that pairs structured plans with autonomous coding agents, keeping humans in the loop for review, tests, and release.",
+    "A mobile habit-building and habit-breaking application that generates structured, checklist-driven plans using OpenAI, helping users focus on daily execution through streaks, tracking, and a focused Today view.",
   problemSolved:
-    "Ad-hoc ChatGPT sessions lose context, skip verification steps, and are risky on production codebases. Teams need repeatable agent workflows without sacrificing engineering standards.",
+    "Most habit apps focus on tracking alone and leave users guessing how to actually change behavior. This project combines structured AI-generated plans with daily execution workflows to reduce friction between intention and action.",
   highlights: [
-    "Task graph with explicit dependencies and rollback points",
-    "Policy layer for file scope, commands, and secret redaction",
-    "Tight integration with git worktrees and CI status",
+    "AI-generated habit plans with structured JSON schema validation and actionable checklist steps",
+    "Plan versioning system with regeneration, difficulty adjustment, and rollback support",
+    "Full-stack architecture using React Native, Supabase Auth/Edge Functions, and AI orchestration workflows",
   ],
-  stack: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "OpenAI API"],
-  githubUrl: "https://github.com/evanritzcovan",
+  stack: [
+    "React Native",
+    "Expo",
+    "TypeScript",
+    "Supabase",
+    "OpenAI API",
+  ],
+  githubUrl: "https://github.com/evanritzcovan/habit-agent",
   demoUrl: undefined,
+  // imageSrc: "/habit-agent.png",
+  // imageAlt: "Habit Agent",
 };
 
 export const projects: Project[] = [
   {
+    id: "kanbas",
+    title: "Kanbas",
+    shortDescription:
+      "A full-stack learning management system with role-based access, authentication, assignments, grading, and file submissions.",
+    stack: ["React", "Node.js", "Express", "MongoDB", "Render", "Netlify"],
+    links: [
+      {
+        label: "Source",
+        href: "https://github.com/evanritzcovan/kanbas-react-web-app/tree/a6",
+      },
+    ],
+    imageSrc: "/kanbas.png",
+    imageAlt: "Kanbas LMS platform",
+  },
+  {
+    id: "foodfinder",
+    title: "Foodfinder",
+    shortDescription:
+      "A full-stack restaurant discovery app using the Yelp API with authentication and user-specific bookmarking across shared profiles.",
+    stack: ["React", "Node.js", "Express", "MongoDB", "Render", "Netlify"],
+    links: [
+      {
+        label: "Source",
+        href: "https://github.com/evanritzcovan/foodfinder-react-web-app",
+      },
+    ],
+    imageSrc: "/foodfinder.png",
+    imageAlt: "Foodfinder restaurant discovery app",
+  },
+  {
     id: "landing-page",
     title: "Personal portfolio",
     shortDescription:
-      "A fast, accessible marketing surface with typed static content and a layout system built for iteration.",
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      "A component-driven portfolio site built with a structured layout system and optimized for fast, accessible rendering.",
+    stack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     links: [
       {
         label: "Source",
         href: "https://github.com/evanritzcovan/landing-page",
       },
     ],
-    imageSrc: "/window.svg",
-    imageAlt: "Decorative browser window graphic",
-  },
-  {
-    id: "design-system-kit",
-    title: "UI kit extensions",
-    shortDescription:
-      "Composable primitives on top of shadcn-style tokens—buttons, forms, and density modes tuned for data-heavy dashboards.",
-    stack: ["React", "Tailwind CSS", "Radix", "Storybook"],
-    links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/evanritzcovan",
-      },
-    ],
-  },
-  {
-    id: "workflow-runner",
-    title: "Workflow runner",
-    shortDescription:
-      "Typed job definitions, retries, and structured logs for long-running automations triggered from CI or Slack.",
-    stack: ["TypeScript", "PostgreSQL", "Docker"],
-    links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/evanritzcovan",
-      },
-    ],
-    imageSrc: "/globe.svg",
-    imageAlt: "Decorative globe graphic",
+    imageSrc: "/portfolio.png",
+    imageAlt: "Personal portfolio",
   },
 ];

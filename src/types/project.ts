@@ -10,7 +10,7 @@ export type Project = {
   shortDescription: string;
   stack: string[];
   links: ProjectLink[];
-  /** Path under `public/` (e.g. `/globe.svg`) or remote URL */
+  /** Path under `public/` or remote URL */
   imageSrc?: string;
   imageAlt?: string;
 };

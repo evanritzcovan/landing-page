@@ -1,22 +1,22 @@
 import type { AboutContent } from "@/types/about";
 
 export const aboutContent: AboutContent = {
-  eyebrow: "Profile",
-  title: "About",
+  eyebrow: "About",
+  title: "Overview",
   intro:
-    "I build interfaces people trust and systems teams can evolve—grounded in craft, clarity, and a bias toward shipping.",
+    "I’m a frontend and mobile developer with experience building production applications, maintaining live systems, and working on full-stack web projects in production environments.",
   blocks: [
     {
       title: "Frontend & UI engineering",
-      body: "Years of work across React ecosystems, design systems, and product surfaces where details matter: accessibility, performance budgets, responsive layouts, and maintainable component architecture.",
+      body: "Built with React and React Native, focused on responsive interfaces, reusable component systems, and production user-facing features.",
     },
     {
-      title: "Into agentic AI",
-      body: "Recently focused on agentic workflows—structuring intent, tool use, and human review so automation feels dependable on real codebases, not just impressive in a demo.",
+      title: "AI Systems",
+      body: "Exploring structured LLM workflows using OpenAI APIs, including prompt design, stateful application patterns, and retrieval-based context systems with Supabase.",
     },
     {
-      title: "Product-oriented mindset",
-      body: "I partner early on problem framing, tradeoffs, and delivery sequencing. Engineering is most valuable when it connects user outcomes, business constraints, and a path to iterate after launch.",
+      title: "Building & Iteration",
+      body: "I prefer working through implementation and feedback loops—turning product ideas into working systems and refining them through iteration rather than upfront abstraction.",
     },
   ],
 };

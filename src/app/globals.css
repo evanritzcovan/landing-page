@@ -138,6 +138,11 @@
   }
   html {
     @apply scroll-smooth font-sans;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  html::-webkit-scrollbar {
+    display: none;
   }
   h1,
   h2,

@@ -1,46 +1,83 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
+
 import { SectionWrapper } from "@/components/layout/section-wrapper";
 import { ProjectCard } from "@/components/shared/project-card";
 import { featuredProject, projects } from "@/data/projects";
+import { sectionMotion } from "@/lib/section-motion";
 
 import { FeaturedProjectShowcase } from "./featured-project";
 
+const inView = { once: true, margin: "-72px" } as const;
+
 export function ProjectsSection() {
+  const reduced = useReducedMotion();
+  const { container, item } = sectionMotion(reduced);
+
   return (
     <SectionWrapper id="projects" aria-labelledby="projects-heading">
-      <p className="text-muted-foreground text-xs font-medium tracking-[0.2em] uppercase">
-        Work
-      </p>
-      <h2
-        id="projects-heading"
-        className="text-foreground mt-2 text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={inView}
+        variants={container}
       >
-        Projects
-      </h2>
-      <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed text-pretty sm:text-lg">
-        A mix of product surfaces, systems work, and experiments at the
-        intersection of UI engineering and agentic tooling—built for clarity,
-        speed, and maintainability.
-      </p>
+        <motion.p
+          variants={item}
+          className="text-muted-foreground text-xs font-medium tracking-[0.2em] uppercase"
+        >
+          Projects
+        </motion.p>
+        <motion.h2
+          variants={item}
+          id="projects-heading"
+          className="text-foreground mt-2 text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
+        >
+          Selected work
+        </motion.h2>
+        <motion.p
+          variants={item}
+          className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed text-pretty sm:text-lg"
+        >
+          A collection of full-stack and frontend systems including authenticated applications, API-driven products, interface design work, and applied LLM-based features.
+        </motion.p>
 
-      <div className="mt-14 sm:mt-16">
-        <FeaturedProjectShowcase project={featuredProject} />
-      </div>
+        <motion.div variants={item} className="mt-14 sm:mt-16">
+          <FeaturedProjectShowcase project={featuredProject} />
+        </motion.div>
+      </motion.div>
 
-      <div className="mt-20 md:mt-28">
-        <h3 className="text-foreground text-xl font-semibold tracking-tight">
+      <motion.div
+        className="mt-20 md:mt-28"
+        initial="hidden"
+        whileInView="visible"
+        viewport={inView}
+        variants={container}
+      >
+        <motion.h3
+          variants={item}
+          className="text-foreground text-xl font-semibold tracking-tight"
+        >
           More projects
-        </h3>
-        <p className="text-muted-foreground mt-2 max-w-2xl text-sm leading-relaxed">
-          Smaller builds and libraries that round out the engineering story.
-        </p>
-        <ul className="mt-8 grid list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+        </motion.h3>
+        <motion.p
+          variants={item}
+          className="text-muted-foreground mt-2 max-w-2xl text-sm leading-relaxed"
+        >
+          Smaller systems, experiments, and completed builds beyond featured work.
+        </motion.p>
+        <motion.ul
+          variants={container}
+          className="mt-8 grid list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8"
+        >
           {projects.map((project) => (
-            <li key={project.id} className="h-full">
+            <motion.li key={project.id} variants={item} className="h-full">
               <ProjectCard project={project} />
-            </li>
+            </motion.li>
           ))}
-        </ul>
-      </div>
+        </motion.ul>
+      </motion.div>
     </SectionWrapper>
   );
 }

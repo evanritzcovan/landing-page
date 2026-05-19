@@ -27,22 +27,20 @@ export function TechStackSection() {
           variants={item}
           className="text-muted-foreground text-xs font-medium tracking-[0.2em] uppercase"
         >
-          Capabilities
+          Stack
         </motion.p>
         <motion.h2
           variants={item}
           id="stack-heading"
           className="text-foreground mt-2 text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
         >
-          Tech stack
+          Technologies
         </motion.h2>
         <motion.p
           variants={item}
           className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed text-pretty sm:text-lg"
         >
-          Grouped the way hiring managers scan a profile—depth on the frontend,
-          growing surface on agents and infra, and pragmatic tooling for
-          day-to-day delivery.
+          Frontend and full-stack JavaScript development with experience in API integration and emerging LLM-based application features.
         </motion.p>
 
         <div className="mt-12 grid max-w-4xl grid-cols-1 gap-10 sm:gap-12 md:grid-cols-2">

@@ -18,19 +18,19 @@ export function ContactSection() {
     {
       href: mailto,
       label: "Email",
-      description: `Write to ${siteConfig.email}`,
+      description: "Direct contact for opportunities, projects, or general questions.",
       icon: Mail,
     },
     {
       href: siteConfig.links.github,
       label: "GitHub",
-      description: "Code, experiments, and OSS-style work.",
+      description: "Personal projects, experiments, and application code.",
       icon: Code,
     },
     {
       href: siteConfig.links.linkedin,
       label: "LinkedIn",
-      description: "Background, recommendations, and messages.",
+      description: "Work history, experience, and professional updates.",
       icon: UserRound,
     },
   ] as const;

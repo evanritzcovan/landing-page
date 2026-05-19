@@ -1,6 +1,6 @@
 export const contactContent = {
   eyebrow: "Contact",
-  title: "Let’s connect",
+  title: "Get in touch",
   intro:
-    "Open to senior frontend roles, product-minded engineering, and select collaborations. Prefer email for first contact—links below are always current.",
+    "Open to frontend, product engineering, and AI-focused software roles. Best way to reach me is by email—links below are always current.",
 };
