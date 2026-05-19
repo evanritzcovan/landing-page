@@ -1,16 +1,18 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 import { mainNavItems } from "@/data/navigation";
 import { siteConfig } from "@/data/site";
+import { externalLinkLabel } from "@/lib/a11y";
 import { opensInNewTab } from "@/lib/href";
 import { cn } from "@/lib/utils";
 
 import { Container } from "./container";
+import { useFocusTrap } from "./use-focus-trap";
 
 function NavLink({
   href,
@@ -23,12 +25,13 @@ function NavLink({
   onNavigate?: () => void;
   className?: string;
 }) {
+  const external = opensInNewTab(href);
   const linkClass = cn(
     "text-muted-foreground hover:text-foreground focus-visible:ring-ring rounded-md text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
     className
   );
 
-  if (opensInNewTab(href)) {
+  if (external) {
     return (
       <a
         href={href}
@@ -36,6 +39,7 @@ function NavLink({
         rel="noopener noreferrer"
         onClick={onNavigate}
         className={linkClass}
+        aria-label={externalLinkLabel(String(children))}
       >
         {children}
       </a>
@@ -56,6 +60,10 @@ function NavLink({
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileNavRef = useRef<HTMLDivElement>(null);
+
+  useFocusTrap(open, mobileNavRef, menuButtonRef);
 
   useEffect(() => {
     if (!open) return;
@@ -94,8 +102,9 @@ export function Navbar() {
         </nav>
 
         <button
+          ref={menuButtonRef}
           type="button"
-          className="text-muted-foreground hover:text-foreground focus-visible:ring-ring inline-flex size-9 items-center justify-center rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none md:hidden"
+          className="text-muted-foreground hover:text-foreground focus-visible:ring-ring inline-flex size-11 items-center justify-center rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none md:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -110,11 +119,11 @@ export function Navbar() {
           <button
             type="button"
             className="bg-background/80 fixed inset-0 z-40 md:hidden"
-            aria-hidden
-            tabIndex={-1}
+            aria-label="Close menu"
             onClick={() => setOpen(false)}
           />
           <div
+            ref={mobileNavRef}
             id="mobile-nav"
             className="border-border/60 bg-background/95 fixed inset-x-0 top-14 z-50 border-b shadow-lg md:hidden"
             role="dialog"
@@ -127,7 +136,7 @@ export function Navbar() {
                   <li key={item.label}>
                     <NavLink
                       href={item.href}
-                      className="block py-2.5 text-base"
+                      className="block min-h-11 py-2.5 text-base"
                       onNavigate={() => setOpen(false)}
                     >
                       {item.label}

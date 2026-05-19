@@ -20,7 +20,7 @@ export function SectionWrapper({
   return (
     <section
       className={cn(
-        "scroll-mt-[calc(var(--header-height)+0.75rem)] py-16 md:py-24",
+        "scroll-mt-[calc(var(--header-height)+0.75rem)] py-[var(--section-y)] md:py-[var(--section-y-md)]",
         className
       )}
       {...props}

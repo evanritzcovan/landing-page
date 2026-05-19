@@ -43,13 +43,13 @@ export function ProjectsSection() {
           A collection of full-stack and frontend systems including authenticated applications, API-driven products, interface design work, and applied LLM-based features.
         </motion.p>
 
-        <motion.div variants={item} className="mt-14 sm:mt-16">
+        <motion.div variants={item} className="mt-[var(--section-gap)]">
           <FeaturedProjectShowcase project={featuredProject} />
         </motion.div>
       </motion.div>
 
       <motion.div
-        className="mt-20 md:mt-28"
+        className="mt-[var(--section-gap-lg)]"
         initial="hidden"
         whileInView="visible"
         viewport={inView}

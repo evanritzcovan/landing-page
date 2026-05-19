@@ -8,6 +8,7 @@ import { Container } from "@/components/layout/container";
 import { buttonVariants } from "@/components/ui/button";
 import { getHeroCtas, heroEyebrow, type HeroCtaIcon } from "@/data/hero";
 import { siteConfig } from "@/data/site";
+import { externalLinkLabel } from "@/lib/a11y";
 import { opensInNewTab } from "@/lib/href";
 import { cn } from "@/lib/utils";
 
@@ -67,7 +68,7 @@ export function HeroSection() {
       aria-labelledby="hero-heading"
       className={cn(
         sectionScroll,
-        "border-border/40 relative overflow-hidden border-b py-24 md:py-32 lg:py-40"
+        "border-border/40 relative overflow-hidden border-b py-[var(--hero-y)] md:py-[var(--hero-y-md)] lg:py-[var(--hero-y-lg)]"
       )}
     >
       <div
@@ -134,6 +135,7 @@ export function HeroSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={ctaClass(cta.variant)}
+                    aria-label={externalLinkLabel(cta.label)}
                   >
                     {content}
                   </a>

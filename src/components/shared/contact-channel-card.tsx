@@ -1,6 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import { ExternalLink } from "lucide-react";
 
+import { externalLinkLabel } from "@/lib/a11y";
 import { opensInNewTab } from "@/lib/href";
 import { cn } from "@/lib/utils";
 
@@ -12,7 +13,7 @@ export type ContactChannelCardProps = {
 };
 
 const cardClass = cn(
-  "border-border/60 bg-card/15 hover:border-border hover:bg-card/25 group flex h-full flex-col rounded-xl border p-5 transition-colors",
+  "border-border/60 bg-card/15 hover:border-border hover:bg-card/25 group flex h-full flex-col rounded-xl border p-5 shadow-sm transition-[border-color,background-color,box-shadow] hover:shadow-md motion-reduce:transition-none",
   "focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
 );
 
@@ -56,6 +57,7 @@ export function ContactChannelCard({
         target="_blank"
         rel="noopener noreferrer"
         className={cardClass}
+        aria-label={externalLinkLabel(label)}
       >
         {body}
       </a>
@@ -63,7 +65,7 @@ export function ContactChannelCard({
   }
 
   return (
-    <a href={href} className={cardClass}>
+    <a href={href} className={cardClass} aria-label={`Send ${label.toLowerCase()}`}>
       {body}
     </a>
   );

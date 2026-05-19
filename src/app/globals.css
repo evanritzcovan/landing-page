@@ -50,6 +50,13 @@
 
 :root {
   --header-height: 3.5rem;
+  --section-y: 4rem;
+  --section-y-md: 6rem;
+  --section-gap: 3rem;
+  --section-gap-lg: 4.5rem;
+  --hero-y: 5.5rem;
+  --hero-y-md: 7.5rem;
+  --hero-y-lg: 9rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -149,5 +156,11 @@
   h3,
   h4 {
     @apply text-balance tracking-tight;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }

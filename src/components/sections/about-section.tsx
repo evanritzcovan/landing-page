@@ -48,7 +48,7 @@ export function AboutSection() {
             <motion.div
               key={block.title}
               variants={item}
-              className="border-border/50 bg-card/15 rounded-xl border border-l-2 border-l-primary/35 p-5 sm:p-6"
+              className="border-border/50 bg-card/15 hover:border-border hover:bg-card/25 rounded-xl border border-l-2 border-l-primary/35 p-5 transition-[border-color,background-color] motion-reduce:transition-none sm:p-6"
             >
               <h3 className="text-foreground text-lg font-semibold tracking-tight">
                 {block.title}

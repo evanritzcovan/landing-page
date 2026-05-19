@@ -9,7 +9,7 @@ const techBadgeVariants = cva(
     variants: {
       variant: {
         outline: "border-border/60 text-muted-foreground bg-transparent",
-        soft: "border-transparent bg-muted/50 text-foreground/95",
+        soft: "border-transparent bg-muted/50 text-foreground/95 hover:bg-muted/70",
         solid:
           "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/90",
       },

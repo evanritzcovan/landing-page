@@ -1,9 +1,16 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 
+import {
+  ExpandableImageTrigger,
+  useImageLightbox,
+} from "@/components/shared/image-lightbox";
 import { TechBadge } from "@/components/shared/tech-badge";
 import { buttonVariants } from "@/components/ui/button";
+import { externalLinkLabel } from "@/lib/a11y";
 import { opensInNewTab } from "@/lib/href";
 import { cn } from "@/lib/utils";
 
@@ -22,6 +29,7 @@ function ProjectLinkButton({ label, href }: ProjectLink) {
         target="_blank"
         rel="noopener noreferrer"
         className={className}
+        aria-label={externalLinkLabel(label)}
       >
         {label}
         <ExternalLink className="size-3.5 opacity-70" aria-hidden />
@@ -42,22 +50,38 @@ export type ProjectCardProps = {
 };
 
 export function ProjectCard({ project, className }: ProjectCardProps) {
+  const imageAlt = project.imageAlt || `${project.title} preview`;
+  const images = project.imageSrc
+    ? [{ src: project.imageSrc, alt: imageAlt }]
+    : [];
+  const { openAt, lightbox } = useImageLightbox(images);
+
   return (
     <article
       className={cn(
-        "border-border/60 bg-card/20 flex h-full flex-col overflow-hidden rounded-xl border",
+        "border-border/60 bg-card/20 hover:border-border hover:bg-card/30 flex h-full flex-col overflow-hidden rounded-xl border shadow-sm transition-[border-color,background-color,box-shadow] motion-reduce:transition-none",
         className
       )}
     >
+      {lightbox}
       <div className="border-border/40 bg-muted/15 relative aspect-[16/10] border-b">
         {project.imageSrc ? (
-          <Image
-            src={project.imageSrc}
-            alt={project.imageAlt || `${project.title} preview`}
-            fill
-            className="object-contain object-center p-8 opacity-90"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
+          <ExpandableImageTrigger
+            images={images}
+            imageIndex={0}
+            onOpen={openAt}
+            className="absolute inset-0"
+          >
+            <Image
+              src={project.imageSrc}
+              alt=""
+              aria-hidden
+              fill
+              loading="lazy"
+              className="object-contain object-center p-6 opacity-90 sm:p-8"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+          </ExpandableImageTrigger>
         ) : (
           <div
             aria-hidden

@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import { Shell } from "@/components/layout/shell";
-import { siteConfig } from "@/data/site";
+import { SiteJsonLd } from "@/components/seo/site-json-ld";
+import { createSiteMetadata } from "@/lib/site-metadata";
 
 import "./globals.css";
 
@@ -18,14 +18,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: siteConfig.title,
-    template: `%s · ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-};
+export const metadata = createSiteMetadata();
 
 export default function RootLayout({
   children,
@@ -38,7 +31,8 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`dark ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-screen flex-col">
+      <body className="flex min-h-screen flex-col pb-[env(safe-area-inset-bottom)]">
+        <SiteJsonLd />
         <Shell>{children}</Shell>
         <Analytics />
         <SpeedInsights />

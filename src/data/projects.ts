@@ -24,15 +24,15 @@ export const featuredProject: FeaturedProject = {
   demoUrl: undefined,
   screenshots: [
     {
-      src: "/habit-agent-1.png",
+      src: "/habit-agent-1.webp",
       alt: "AI habit tracker Today view",
     },
     {
-      src: "/habit-agent-2.png",
+      src: "/habit-agent-2.webp",
       alt: "AI habit tracker plan checklist",
     },
     {
-      src: "/habit-agent-3.png",
+      src: "/habit-agent-3.webp",
       alt: "AI habit tracker habit detail",
     },
   ],
@@ -51,7 +51,7 @@ export const projects: Project[] = [
         href: "https://github.com/evanritzcovan/kanbas-react-web-app/tree/a6",
       },
     ],
-    imageSrc: "/kanbas.png",
+    imageSrc: "/kanbas.webp",
     imageAlt: "Kanbas LMS platform",
   },
   {
@@ -66,7 +66,7 @@ export const projects: Project[] = [
         href: "https://github.com/evanritzcovan/foodfinder-react-web-app",
       },
     ],
-    imageSrc: "/foodfinder.png",
+    imageSrc: "/foodfinder.webp",
     imageAlt: "Foodfinder restaurant discovery app",
   },
   {
@@ -81,7 +81,7 @@ export const projects: Project[] = [
         href: "https://github.com/evanritzcovan/landing-page",
       },
     ],
-    imageSrc: "/portfolio.png",
+    imageSrc: "/portfolio.webp",
     imageAlt: "Personal portfolio",
   },
 ];

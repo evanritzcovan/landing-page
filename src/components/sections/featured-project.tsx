@@ -1,10 +1,11 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
 import { Code, ExternalLink } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
+import { ExpandableCoverImage } from "@/components/shared/expandable-cover-image";
 import { FeaturedScreenshotGallery } from "@/components/shared/featured-screenshot-gallery";
 import { TechBadge } from "@/components/shared/tech-badge";
+import { externalLinkLabel } from "@/lib/a11y";
 import { cn } from "@/lib/utils";
 
 import type { FeaturedProject } from "@/types/project";
@@ -48,11 +49,10 @@ function FeaturedProjectVisual({ project }: { project: FeaturedProject }) {
     return (
       <VisualShell>
         <div className="relative aspect-video h-full min-h-[280px] w-full lg:aspect-auto lg:min-h-[380px]">
-          <Image
+          <ExpandableCoverImage
             src={project.imageSrc}
             alt={project.imageAlt || `${project.title} interface preview`}
-            fill
-            className="object-cover object-top"
+            imageClassName="object-cover object-top"
             sizes="(max-width: 1024px) 100vw, 50vw"
             priority
           />
@@ -84,7 +84,7 @@ export function FeaturedProjectShowcase({
   return (
     <article
       aria-labelledby={`${project.id}-featured-title`}
-      className="border-border/60 bg-card/15 overflow-hidden rounded-2xl border"
+      className="border-border/60 bg-card/15 hover:border-border/80 overflow-hidden rounded-2xl border shadow-sm transition-[border-color,box-shadow] hover:shadow-md motion-reduce:transition-none"
     >
       <div className="grid gap-10 lg:grid-cols-2 lg:gap-12 lg:items-center">
         <div className="flex flex-col p-6 sm:p-8 lg:p-10">
@@ -136,6 +136,7 @@ export function FeaturedProjectShowcase({
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={externalLinkLabel("View on GitHub")}
               className={cn(
                 buttonVariants({ variant: "default", size: "default" }),
                 "gap-2"
@@ -149,6 +150,7 @@ export function FeaturedProjectShowcase({
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={externalLinkLabel("Live demo")}
                 className={cn(
                   buttonVariants({ variant: "outline", size: "default" }),
                   "gap-2"
