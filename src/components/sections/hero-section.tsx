@@ -10,6 +10,7 @@ import { getHeroCtas, heroEyebrow, type HeroCtaIcon } from "@/data/hero";
 import { siteConfig } from "@/data/site";
 import { externalLinkLabel } from "@/lib/a11y";
 import { opensInNewTab } from "@/lib/href";
+import { sectionScrollMargin } from "@/lib/section-layout";
 import { cn } from "@/lib/utils";
 
 function CtaIcon({ name }: { name: HeroCtaIcon }) {
@@ -25,8 +26,6 @@ function CtaIcon({ name }: { name: HeroCtaIcon }) {
       return <ArrowRight className={common} aria-hidden />;
   }
 }
-
-const sectionScroll = "scroll-mt-[calc(var(--header-height)+0.75rem)]" as const;
 
 export function HeroSection() {
   const reduceMotion = useReducedMotion();
@@ -67,7 +66,7 @@ export function HeroSection() {
       id="hero"
       aria-labelledby="hero-heading"
       className={cn(
-        sectionScroll,
+        sectionScrollMargin,
         "border-border/40 relative overflow-hidden border-b py-[var(--hero-y)] md:py-[var(--hero-y-md)] lg:py-[var(--hero-y-lg)]"
       )}
     >

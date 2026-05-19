@@ -4,13 +4,7 @@ export const techCategories: TechCategory[] = [
   {
     id: "web",
     title: "Web",
-    items: [
-      "React",
-      "Next.js",
-      "Tailwind CSS",
-      "Framer Motion",
-      "shadcn/ui",
-    ],
+    items: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "shadcn/ui"],
   },
   {
     id: "mobile",
@@ -52,15 +46,7 @@ export const techCategories: TechCategory[] = [
   {
     id: "languages",
     title: "Languages",
-    items: [
-      "TypeScript",
-      "JavaScript",
-      "Python",
-      "C++",
-      "Java",
-      "HTML",
-      "CSS",
-    ],
+    items: ["TypeScript", "JavaScript", "Python", "C++", "Java", "HTML", "CSS"],
   },
   {
     id: "infra",

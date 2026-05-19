@@ -8,10 +8,9 @@ const techBadgeVariants = cva(
   {
     variants: {
       variant: {
-        outline: "border-border/60 text-muted-foreground bg-transparent",
+        outline:
+          "border-border/60 text-muted-foreground bg-transparent hover:border-border hover:bg-muted/40 hover:text-foreground/90",
         soft: "border-transparent bg-muted/50 text-foreground/95 hover:bg-muted/70",
-        solid:
-          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/90",
       },
       size: {
         sm: "px-2 py-0.5 text-xs",
@@ -25,7 +24,7 @@ const techBadgeVariants = cva(
   }
 );
 
-export type TechBadgeProps = ComponentProps<"span"> &
+type TechBadgeProps = ComponentProps<"span"> &
   VariantProps<typeof techBadgeVariants>;
 
 export function TechBadge({

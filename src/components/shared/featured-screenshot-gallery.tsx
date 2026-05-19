@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 
 import type { FeaturedScreenshot } from "@/types/project";
 
-export type FeaturedScreenshotGalleryProps = {
+type FeaturedScreenshotGalleryProps = {
   screenshots: FeaturedScreenshot[];
   projectTitle: string;
   className?: string;

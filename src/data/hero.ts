@@ -4,7 +4,7 @@ export const heroEyebrow = "Portfolio";
 
 export type HeroCtaIcon = "arrow" | "github" | "linkedin" | "file";
 
-export type HeroCta = {
+type HeroCta = {
   label: string;
   href: string;
   variant: "default" | "outline";

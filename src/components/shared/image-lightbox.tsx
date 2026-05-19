@@ -28,7 +28,7 @@ type ImageLightboxProps = {
   returnFocusRef: RefObject<HTMLElement | null>;
 };
 
-export function ImageLightbox({
+function ImageLightbox({
   images,
   index,
   open,
@@ -164,11 +164,14 @@ export function useImageLightbox(images: LightboxImage[]) {
   const [index, setIndex] = useState(0);
   const returnFocusRef = useRef<HTMLElement | null>(null);
 
-  const openAt = useCallback((imageIndex: number, trigger: HTMLElement | null) => {
-    returnFocusRef.current = trigger;
-    setIndex(imageIndex);
-    setOpen(true);
-  }, []);
+  const openAt = useCallback(
+    (imageIndex: number, trigger: HTMLElement | null) => {
+      returnFocusRef.current = trigger;
+      setIndex(imageIndex);
+      setOpen(true);
+    },
+    []
+  );
 
   const close = useCallback(() => setOpen(false), []);
 
@@ -183,7 +186,7 @@ export function useImageLightbox(images: LightboxImage[]) {
     />
   );
 
-  return { openAt, close, lightbox };
+  return { openAt, lightbox };
 }
 
 const triggerClass =

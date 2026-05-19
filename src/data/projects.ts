@@ -13,15 +13,8 @@ export const featuredProject: FeaturedProject = {
     "Plan versioning system with regeneration, difficulty adjustment, and rollback support",
     "Full-stack architecture using React Native, Supabase Auth/Edge Functions, and AI orchestration workflows",
   ],
-  stack: [
-    "React Native",
-    "Expo",
-    "TypeScript",
-    "Supabase",
-    "OpenAI API",
-  ],
+  stack: ["React Native", "Expo", "TypeScript", "Supabase", "OpenAI API"],
   githubUrl: "https://github.com/evanritzcovan/habit-agent",
-  demoUrl: undefined,
   screenshots: [
     {
       src: "/habit-agent-1.webp",

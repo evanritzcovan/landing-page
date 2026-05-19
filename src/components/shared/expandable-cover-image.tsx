@@ -8,7 +8,7 @@ import {
 } from "@/components/shared/image-lightbox";
 import { cn } from "@/lib/utils";
 
-export type ExpandableCoverImageProps = {
+type ExpandableCoverImageProps = {
   src: string;
   alt: string;
   className?: string;

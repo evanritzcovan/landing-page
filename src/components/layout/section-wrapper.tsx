@@ -1,5 +1,6 @@
 import type { ComponentProps } from "react";
 
+import { sectionScrollMargin } from "@/lib/section-layout";
 import { cn } from "@/lib/utils";
 
 import { Container } from "./container";
@@ -20,7 +21,8 @@ export function SectionWrapper({
   return (
     <section
       className={cn(
-        "scroll-mt-[calc(var(--header-height)+0.75rem)] py-[var(--section-y)] md:py-[var(--section-y-md)]",
+        sectionScrollMargin,
+        "py-[var(--section-y)] md:py-[var(--section-y-md)]",
         className
       )}
       {...props}

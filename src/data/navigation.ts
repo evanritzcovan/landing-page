@@ -1,6 +1,6 @@
 import { siteConfig } from "@/data/site";
 
-export type NavItem = {
+type NavItem = {
   label: string;
   /** In-page hash, app route, or absolute URL */
   href: string;

@@ -40,7 +40,9 @@ export function ProjectsSection() {
           variants={item}
           className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed text-pretty sm:text-lg"
         >
-          A collection of full-stack and frontend systems including authenticated applications, API-driven products, interface design work, and applied LLM-based features.
+          A collection of full-stack and frontend systems including
+          authenticated applications, API-driven products, interface design
+          work, and applied LLM-based features.
         </motion.p>
 
         <motion.div variants={item} className="mt-[var(--section-gap)]">
@@ -65,7 +67,8 @@ export function ProjectsSection() {
           variants={item}
           className="text-muted-foreground mt-2 max-w-2xl text-sm leading-relaxed"
         >
-          Smaller systems, experiments, and completed builds beyond featured work.
+          Smaller systems, experiments, and completed builds beyond featured
+          work.
         </motion.p>
         <motion.ul
           variants={container}

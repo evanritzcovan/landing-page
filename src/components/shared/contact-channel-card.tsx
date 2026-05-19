@@ -5,7 +5,7 @@ import { externalLinkLabel } from "@/lib/a11y";
 import { opensInNewTab } from "@/lib/href";
 import { cn } from "@/lib/utils";
 
-export type ContactChannelCardProps = {
+type ContactChannelCardProps = {
   href: string;
   label: string;
   description: string;
@@ -65,7 +65,11 @@ export function ContactChannelCard({
   }
 
   return (
-    <a href={href} className={cardClass} aria-label={`Send ${label.toLowerCase()}`}>
+    <a
+      href={href}
+      className={cardClass}
+      aria-label={`Send ${label.toLowerCase()}`}
+    >
       {body}
     </a>
   );

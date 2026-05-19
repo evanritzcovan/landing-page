@@ -18,7 +18,8 @@ export function ContactSection() {
     {
       href: mailto,
       label: "Email",
-      description: "Direct contact for opportunities, projects, or general questions.",
+      description:
+        "Direct contact for opportunities, projects, or general questions.",
       icon: Mail,
     },
     {

@@ -44,7 +44,7 @@ function ProjectLinkButton({ label, href }: ProjectLink) {
   );
 }
 
-export type ProjectCardProps = {
+type ProjectCardProps = {
   project: Project;
   className?: string;
 };
