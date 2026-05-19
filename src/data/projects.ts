@@ -85,3 +85,4 @@ export const projects: Project[] = [
     imageAlt: "Personal portfolio",
   },
 ];
+
