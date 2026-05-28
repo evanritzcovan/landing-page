@@ -15,7 +15,7 @@ type FeaturedProjectShowcaseProps = {
 };
 
 const visualShellClass =
-  "relative min-h-0 sm:min-h-[280px] lg:min-h-[380px]";
+  "relative h-full w-full min-h-0 sm:min-h-[280px] lg:min-h-[420px]";
 
 const visualBackdropClass =
   "pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_60%_at_50%_40%,oklch(0.32_0.08_264/0.45),transparent_68%),linear-gradient(165deg,oklch(0.18_0.02_264/0.9),oklch(0.14_0.02_264/0.95))]";
@@ -39,7 +39,6 @@ function FeaturedProjectVisual({ project }: { project: FeaturedProject }) {
         <FeaturedScreenshotGallery
           screenshots={screenshots}
           projectTitle={project.title}
-          className="relative min-h-0 px-3 py-6 sm:min-h-[280px] sm:px-6 sm:py-10 lg:min-h-[380px] lg:px-8"
         />
       </VisualShell>
     );
@@ -86,7 +85,7 @@ export function FeaturedProjectShowcase({
       aria-labelledby={`${project.id}-featured-title`}
       className="border-border/60 bg-card/15 hover:border-border/80 rounded-2xl border shadow-sm transition-[border-color,box-shadow] hover:shadow-md motion-reduce:transition-none"
     >
-      <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 lg:items-center">
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.15fr)] lg:items-stretch lg:gap-4">
         <div className="min-w-0 flex flex-col p-5 sm:p-8 lg:p-10">
           <p className="text-muted-foreground text-xs font-medium tracking-[0.2em] uppercase">
             Featured
@@ -165,7 +164,11 @@ export function FeaturedProjectShowcase({
           </div>
         </div>
 
-        <div className="border-border/40 min-w-0 overflow-x-hidden overflow-y-visible border-t lg:overflow-hidden lg:border-t-0 lg:border-l">
+        <div className="border-border/40 relative w-full min-w-0 overflow-x-hidden overflow-y-visible border-t lg:overflow-hidden lg:border-t-0">
+          <div
+            aria-hidden
+            className="bg-border/40 absolute top-8 bottom-8 left-0 hidden w-px lg:block"
+          />
           <FeaturedProjectVisual project={project} />
         </div>
       </div>

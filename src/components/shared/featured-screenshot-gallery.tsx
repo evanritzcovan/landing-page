@@ -17,9 +17,6 @@ type FeaturedScreenshotGalleryProps = {
   className?: string;
 };
 
-const figureClass =
-  "w-full min-w-0 max-w-full justify-self-center md:max-w-[11rem] lg:max-w-[10.5rem] xl:max-w-[11.5rem]";
-
 export function FeaturedScreenshotGallery({
   screenshots,
   projectTitle,
@@ -39,46 +36,46 @@ export function FeaturedScreenshotGallery({
       {lightbox}
       <div
         className={cn(
-          "relative flex w-full min-w-0 items-center justify-center",
+          "grid h-full w-full min-w-0 grid-cols-3 items-end gap-2 px-2 pt-2 pb-6",
+          "sm:gap-3 sm:px-3 sm:pb-10",
+          "lg:items-center lg:content-center lg:gap-3 lg:px-6 lg:py-8",
           className
         )}
         aria-label={`${projectTitle} app screenshots`}
       >
-        <div
-          className={cn(
-            "grid w-full min-w-0 grid-cols-3 items-end justify-items-center gap-2 overflow-visible px-1 pt-2",
-            "sm:gap-3 sm:px-4 sm:pt-3",
-            "[&>figure:nth-child(2)]:-translate-y-1.5 md:-translate-y-2",
-            "lg:gap-4"
-          )}
-        >
-          {screenshots.map((shot, i) => (
-            <figure key={shot.src} className={figureClass}>
-              <ExpandableImageTrigger
-                images={images}
-                imageIndex={i}
-                onOpen={openAt}
-                className="rounded-[1.35rem]"
-              >
-                <div className="border-border/60 bg-card/40 rounded-[1.35rem] border p-1 shadow-sm ring-1 ring-white/5">
-                  <div className="bg-background relative aspect-[9/19.5] w-full overflow-hidden rounded-[1.05rem]">
-                    <Image
-                      src={shot.src}
-                      alt=""
-                      aria-hidden
-                      fill
-                      priority={i === 0}
-                      loading={i === 0 ? undefined : "lazy"}
-                      sizes="(max-width: 768px) 28vw, (max-width: 1024px) 30vw, 180px"
-                      className="object-contain object-center"
-                    />
-                  </div>
+        {screenshots.map((shot, i) => (
+          <figure
+            key={shot.src}
+            className={cn(
+              "min-w-0 w-full",
+              i === 1 &&
+                "-translate-y-1.5 lg:-translate-y-2 motion-reduce:translate-y-0"
+            )}
+          >
+            <ExpandableImageTrigger
+              images={images}
+              imageIndex={i}
+              onOpen={openAt}
+              className="w-full rounded-[1.35rem]"
+            >
+              <div className="border-border/60 bg-card/40 w-full rounded-[1.35rem] border p-1 shadow-sm ring-1 ring-white/5">
+                <div className="bg-background relative aspect-[9/19.5] w-full overflow-hidden rounded-[1.05rem]">
+                  <Image
+                    src={shot.src}
+                    alt=""
+                    aria-hidden
+                    fill
+                    priority={i === 0}
+                    loading={i === 0 ? undefined : "lazy"}
+                    sizes="(max-width: 1023px) 31vw, (max-width: 1439px) 14vw, 210px"
+                    className="object-contain object-center"
+                  />
                 </div>
-              </ExpandableImageTrigger>
-              <figcaption className="sr-only">{images[i].alt}</figcaption>
-            </figure>
-          ))}
-        </div>
+              </div>
+            </ExpandableImageTrigger>
+            <figcaption className="sr-only">{images[i].alt}</figcaption>
+          </figure>
+        ))}
       </div>
     </>
   );
