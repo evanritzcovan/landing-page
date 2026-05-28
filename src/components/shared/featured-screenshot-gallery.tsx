@@ -17,6 +17,9 @@ type FeaturedScreenshotGalleryProps = {
   className?: string;
 };
 
+const figureClass =
+  "w-full min-w-0 max-w-full justify-self-center md:max-w-[11rem] lg:max-w-[10.5rem] xl:max-w-[11.5rem]";
+
 export function FeaturedScreenshotGallery({
   screenshots,
   projectTitle,
@@ -36,30 +39,21 @@ export function FeaturedScreenshotGallery({
       {lightbox}
       <div
         className={cn(
-          "relative flex w-full items-center justify-center",
+          "relative flex w-full min-w-0 items-center justify-center",
           className
         )}
         aria-label={`${projectTitle} app screenshots`}
       >
         <div
           className={cn(
-            "flex w-full gap-4 overflow-x-auto overscroll-x-contain scroll-px-4 px-4 pb-2 [-webkit-overflow-scrolling:touch]",
-            "snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
-            "md:grid md:max-w-none md:grid-cols-3 md:items-end md:justify-items-center md:gap-3 md:overflow-visible md:snap-none md:px-0 md:pb-0",
-            "md:[&>figure:nth-child(2)]:-translate-y-2",
+            "grid w-full min-w-0 grid-cols-3 items-end justify-items-center gap-2 overflow-visible px-1 pt-2",
+            "sm:gap-3 sm:px-4 sm:pt-3",
+            "[&>figure:nth-child(2)]:-translate-y-1.5 md:-translate-y-2",
             "lg:gap-4"
           )}
         >
           {screenshots.map((shot, i) => (
-            <figure
-              key={shot.src}
-              className={cn(
-                "snap-center shrink-0",
-                "w-[min(38vw,11.5rem)] sm:w-[min(32vw,12.5rem)]",
-                "md:w-full md:max-w-[11rem] md:shrink md:justify-self-center",
-                "lg:max-w-[10.5rem] xl:max-w-[11.5rem]"
-              )}
-            >
+            <figure key={shot.src} className={figureClass}>
               <ExpandableImageTrigger
                 images={images}
                 imageIndex={i}
@@ -75,7 +69,7 @@ export function FeaturedScreenshotGallery({
                       fill
                       priority={i === 0}
                       loading={i === 0 ? undefined : "lazy"}
-                      sizes="(max-width: 768px) 40vw, (max-width: 1024px) 30vw, 180px"
+                      sizes="(max-width: 768px) 28vw, (max-width: 1024px) 30vw, 180px"
                       className="object-contain object-center"
                     />
                   </div>

@@ -10,7 +10,7 @@ npm install
 npm run dev
 ```
 
-Set `NEXT_PUBLIC_SITE_URL` and `NEXT_PUBLIC_CONTACT_EMAIL` in `.env.local` (and in Vercel for production).
+Set `NEXT_PUBLIC_SITE_URL` and `NEXT_PUBLIC_CONTACT_EMAIL` in `.env.local` (and in Vercel for production). For mobile testing over Wi‑Fi, optionally set `NEXT_DEV_ALLOWED_ORIGIN` to your computer’s LAN IP (see `.env.example`).
 
 ## Scripts
 

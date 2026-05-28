@@ -15,7 +15,7 @@ type FeaturedProjectShowcaseProps = {
 };
 
 const visualShellClass =
-  "border-border/40 relative min-h-[280px] border-t lg:min-h-[380px] lg:border-t-0 lg:border-l";
+  "relative min-h-0 sm:min-h-[280px] lg:min-h-[380px]";
 
 const visualBackdropClass =
   "pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_60%_at_50%_40%,oklch(0.32_0.08_264/0.45),transparent_68%),linear-gradient(165deg,oklch(0.18_0.02_264/0.9),oklch(0.14_0.02_264/0.95))]";
@@ -39,7 +39,7 @@ function FeaturedProjectVisual({ project }: { project: FeaturedProject }) {
         <FeaturedScreenshotGallery
           screenshots={screenshots}
           projectTitle={project.title}
-          className="relative min-h-[280px] px-4 py-8 sm:px-6 sm:py-10 lg:min-h-[380px] lg:px-8"
+          className="relative min-h-0 px-3 py-6 sm:min-h-[280px] sm:px-6 sm:py-10 lg:min-h-[380px] lg:px-8"
         />
       </VisualShell>
     );
@@ -84,10 +84,10 @@ export function FeaturedProjectShowcase({
   return (
     <article
       aria-labelledby={`${project.id}-featured-title`}
-      className="border-border/60 bg-card/15 hover:border-border/80 overflow-hidden rounded-2xl border shadow-sm transition-[border-color,box-shadow] hover:shadow-md motion-reduce:transition-none"
+      className="border-border/60 bg-card/15 hover:border-border/80 rounded-2xl border shadow-sm transition-[border-color,box-shadow] hover:shadow-md motion-reduce:transition-none"
     >
-      <div className="grid gap-10 lg:grid-cols-2 lg:gap-12 lg:items-center">
-        <div className="flex flex-col p-6 sm:p-8 lg:p-10">
+      <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 lg:items-center">
+        <div className="min-w-0 flex flex-col p-5 sm:p-8 lg:p-10">
           <p className="text-muted-foreground text-xs font-medium tracking-[0.2em] uppercase">
             Featured
           </p>
@@ -100,16 +100,16 @@ export function FeaturedProjectShowcase({
           <p className="text-muted-foreground mt-2 text-base leading-relaxed sm:text-lg">
             {project.tagline}
           </p>
-          <p className="text-muted-foreground mt-5 text-sm leading-relaxed sm:text-base">
+          <p className="text-muted-foreground mt-5 text-sm leading-relaxed [overflow-wrap:anywhere] sm:text-base">
             {project.description}
           </p>
 
-          <div className="mt-8 space-y-4">
+          <div className="mt-6 space-y-4 sm:mt-8">
             <div>
               <h4 className="text-foreground text-xs font-semibold tracking-wide uppercase">
                 Problem
               </h4>
-              <p className="text-muted-foreground mt-2 text-sm leading-relaxed sm:text-base">
+              <p className="text-muted-foreground mt-2 text-sm leading-relaxed [overflow-wrap:anywhere] sm:text-base">
                 {project.problemSolved}
               </p>
             </div>
@@ -117,9 +117,11 @@ export function FeaturedProjectShowcase({
               <h4 className="text-foreground text-xs font-semibold tracking-wide uppercase">
                 Highlights
               </h4>
-              <ul className="text-muted-foreground mt-2 list-inside list-disc space-y-2 text-sm leading-relaxed sm:text-base">
+              <ul className="text-muted-foreground mt-2 list-disc space-y-2 pl-5 text-sm leading-relaxed [overflow-wrap:anywhere] sm:text-base">
                 {project.highlights.map((item) => (
-                  <li key={item}>{item}</li>
+                  <li key={item} className="pl-0.5">
+                    {item}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -163,7 +165,9 @@ export function FeaturedProjectShowcase({
           </div>
         </div>
 
-        <FeaturedProjectVisual project={project} />
+        <div className="border-border/40 min-w-0 overflow-x-hidden overflow-y-visible border-t lg:overflow-hidden lg:border-t-0 lg:border-l">
+          <FeaturedProjectVisual project={project} />
+        </div>
       </div>
     </article>
   );
